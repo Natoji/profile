@@ -1,4 +1,4 @@
-/* style.css */
+/* css/style.css */
 
 * {
     margin: 0;
@@ -6,6 +6,7 @@
     box-sizing: border-box;
 }
 
+/* Định nghĩa các biến CSS cho chế độ Sáng (Light Mode - mặc định) */
 :root {
     --primary-color: #2563eb;
     --secondary-color: #1e40af;
@@ -15,13 +16,48 @@
     --bg-light: #f8fafc;
     --white: #ffffff;
     --shadow: 0 10px 25px rgba(0,0,0,0.1);
+
+    /* Các màu nền và chữ chính */
+    --body-bg: var(--white); /* Nền toàn bộ trang */
+    --section-bg: var(--bg-light); /* Nền các section chẵn */
+    --card-bg: var(--white); /* Nền card (skills, services, portfolio) */
+    --header-bg: rgba(255, 255, 255, 0.95); /* Nền header */
+    --text-color: var(--text-dark); /* Màu chữ chính */
+    --text-secondary-color: var(--text-light); /* Màu chữ phụ */
+    --border-color: #e5e7eb; /* Màu đường viền input */
+    --scroll-shadow: var(--shadow); /* Shadow cho header khi cuộn */
 }
+
+/* Định nghĩa các biến CSS cho chế độ Tối (Dark Mode) */
+/* Các biến này sẽ được áp dụng khi body có class 'dark-mode' */
+body.dark-mode {
+    --primary-color: #667eea; /* Màu xanh sáng hơn cho dark mode */
+    --secondary-color: #764ba2; /* Màu tím sáng hơn cho dark mode */
+    --accent-color: #f59e0b; /* Giữ nguyên hoặc điều chỉnh nếu cần */
+    --text-dark: #e2e8f0; /* Màu chữ sáng cho nền tối */
+    --text-light: #a0aec0; /* Màu chữ phụ sáng hơn */
+
+    --body-bg: #1a202c; /* Nền tối toàn bộ trang */
+    --section-bg: #2d3748; /* Nền các section chẵn tối hơn */
+    --card-bg: #2a3341; /* Nền card tối hơn */
+    --header-bg: rgba(26, 32, 44, 0.95); /* Nền header tối */
+    --text-color: var(--text-dark);
+    --text-secondary-color: var(--text-light);
+    --border-color: #4a5568; /* Màu đường viền input tối */
+    --shadow: 0 10px 25px rgba(0,0,0,0.5); /* Shadow tối hơn */
+    --scroll-shadow: 0 10px 25px rgba(0,0,0,0.7); /* Shadow cho header khi cuộn */
+}
+
+
+/* Cập nhật các quy tắc CSS để sử dụng biến */
 
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: var(--text-dark);
+    color: var(--text-color); /* Sử dụng biến */
     scroll-behavior: smooth;
+    background-color: var(--body-bg); /* Sử dụng biến */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Thêm transition */
 }
 
 /* Header & Navigation */
@@ -29,11 +65,12 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    background: var(--header-bg); /* Sử dụng biến */
     backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 1rem 0;
-    box-shadow: var(--shadow);
+    box-shadow: var(--scroll-shadow); /* Sử dụng biến */
+    transition: background 0.3s ease, box-shadow 0.3s ease; /* Thêm transition */
 }
 
 nav {
@@ -59,7 +96,7 @@ nav {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-dark);
+    color: var(--text-color); /* Sử dụng biến */
     font-weight: 500;
     transition: color 0.3s ease;
 }
@@ -77,18 +114,20 @@ nav {
 .menu-toggle span {
     width: 25px;
     height: 3px;
-    background: var(--text-dark);
+    background: var(--text-color); /* Sử dụng biến */
     margin: 3px 0;
     transition: 0.3s;
 }
 
 /* Hero Section */
 .hero {
+    /* Giữ nguyên gradient cho hero, vì nó thường không đổi giữa light/dark */
+    /* Nếu bạn muốn thay đổi gradient, hãy định nghĩa biến cho màu gradient */
     min-height: 100vh;
     display: flex;
     align-items: center;
     background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-    color: var(--white);
+    color: var(--white); /* Màu chữ trắng vẫn tốt trên nền gradient */
     position: relative;
     overflow: hidden;
 }
@@ -182,18 +221,29 @@ nav {
     animation: fadeInRight 1s ease 0.8s both;
 }
 
-.profile-image {
+.profile-image-container { /* Đổi tên class để tránh nhầm lẫn với img */
     width: 300px;
     height: 300px;
     border-radius: 50%;
     border: 5px solid rgba(255, 255, 255, 0.3);
     object-fit: cover;
     box-shadow: var(--shadow);
+    /* Các thuộc tính về gradient, display, align-items, justify-content đã chuyển vào inline style trong HTML */
 }
+
+.profile-image { /* Dành cho thẻ img */
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
 
 /* Section Styles */
 section {
     padding: 5rem 0;
+    background-color: var(--body-bg); /* Mặc định là body-bg */
+    transition: background-color 0.3s ease; /* Thêm transition */
 }
 
 .container {
@@ -210,18 +260,18 @@ section {
 .section-title h2 {
     font-size: 2.5rem;
     font-weight: 700;
-    color: var(--text-dark);
+    color: var(--text-color); /* Sử dụng biến */
     margin-bottom: 1rem;
 }
 
 .section-title p {
     font-size: 1.1rem;
-    color: var(--text-light);
+    color: var(--text-secondary-color); /* Sử dụng biến */
 }
 
 /* About Section */
 .about {
-    background: var(--bg-light);
+    background: var(--section-bg); /* Sử dụng biến */
 }
 
 .about-content {
@@ -239,7 +289,7 @@ section {
 
 .about-text p {
     margin-bottom: 1.5rem;
-    color: var(--text-light);
+    color: var(--text-secondary-color); /* Sử dụng biến */
 }
 
 .skills-grid {
@@ -250,12 +300,12 @@ section {
 }
 
 .skill-item {
-    background: var(--white);
+    background: var(--card-bg); /* Sử dụng biến */
     padding: 1.5rem;
     border-radius: 10px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow); /* Sử dụng biến */
     text-align: center;
-    transition: transform 0.3s ease;
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Thêm transition */
 }
 
 .skill-item:hover {
@@ -276,10 +326,10 @@ section {
 }
 
 .service-card {
-    background: var(--white);
+    background: var(--card-bg); /* Sử dụng biến */
     padding: 2rem;
     border-radius: 15px;
-    box-shadow: var(--shadow);
+    box-shadow: var(--shadow); /* Sử dụng biến */
     text-align: center;
     transition: all 0.3s ease;
     border-top: 4px solid var(--primary-color);
@@ -299,12 +349,12 @@ section {
 .service-card h3 {
     font-size: 1.5rem;
     margin-bottom: 1rem;
-    color: var(--text-dark);
+    color: var(--text-color); /* Sử dụng biến */
 }
 
 /* Portfolio Section */
 .portfolio {
-    background: var(--bg-light);
+    background: var(--section-bg); /* Sử dụng biến */
 }
 
 .portfolio-grid {
@@ -314,11 +364,11 @@ section {
 }
 
 .portfolio-item {
-    background: var(--white);
+    background: var(--card-bg); /* Sử dụng biến */
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: var(--shadow);
-    transition: transform 0.3s ease;
+    box-shadow: var(--shadow); /* Sử dụng biến */
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease; /* Thêm transition */
 }
 
 .portfolio-item:hover {
@@ -343,11 +393,11 @@ section {
 .portfolio-content h3 {
     font-size: 1.3rem;
     margin-bottom: 1rem;
-    color: var(--text-dark);
+    color: var(--text-color); /* Sử dụng biến */
 }
 
 .portfolio-content p {
-    color: var(--text-light);
+    color: var(--text-secondary-color); /* Sử dụng biến */
     margin-bottom: 1.5rem;
 }
 
@@ -358,11 +408,12 @@ section {
 }
 
 .tag {
-    background: var(--bg-light);
+    background: var(--section-bg); /* Sử dụng biến (nền section chẵn phù hợp cho tag) */
     padding: 0.3rem 0.8rem;
     border-radius: 20px;
     font-size: 0.9rem;
     color: var(--primary-color);
+    transition: background-color 0.3s ease; /* Thêm transition */
 }
 
 /* Contact Section */
@@ -411,16 +462,17 @@ section {
 .form-group label {
     margin-bottom: 0.5rem;
     font-weight: 600;
-    color: var(--text-dark);
+    color: var(--text-color); /* Sử dụng biến */
 }
 
 .form-group input,
 .form-group textarea {
-    padding: 1rem;
-    border: 2px solid #e5e7eb;
+    background-color: var(--card-bg); /* Nền input giống card */
+    color: var(--text-color); /* Màu chữ trong input */
+    border: 2px solid var(--border-color); /* Sử dụng biến */
     border-radius: 10px;
     font-size: 1rem;
-    transition: border-color 0.3s ease;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Thêm transition */
 }
 
 .form-group input:focus,
@@ -431,10 +483,11 @@ section {
 
 /* Footer */
 footer {
-    background: var(--text-dark);
-    color: var(--white);
+    background: var(--text-dark); /* Sử dụng biến, trong dark mode sẽ là màu chữ sáng */
+    color: var(--text-color); /* Sử dụng biến, trong dark mode sẽ là màu chữ sáng */
     text-align: center;
     padding: 3rem 0;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Thêm transition */
 }
 
 .social-links {
@@ -492,10 +545,11 @@ footer {
         top: 70px;
         left: 0;
         width: 100%;
-        background: var(--white);
+        background: var(--header-bg); /* Sử dụng biến */
         flex-direction: column;
         padding: 2rem;
         box-shadow: var(--shadow);
+        transition: background 0.3s ease;
     }
 
     .nav-links.active {
@@ -504,6 +558,16 @@ footer {
 
     .menu-toggle {
         display: flex;
+    }
+    
+    #dark-mode-toggle {
+        display: block; /* Đảm bảo nút này hiển thị trên mobile */
+        order: 2; /* Để nó xuất hiện sau menu-toggle nếu cần sắp xếp lại */
+    }
+
+    nav {
+        justify-content: space-around; /* Hoặc space-between, tùy chỉnh cho phù hợp */
+        gap: 0.5rem; /* Khoảng cách giữa các phần tử trong nav */
     }
 
     .hero-content {
@@ -537,4 +601,20 @@ footer {
 .fade-in.visible {
     opacity: 1;
     transform: translateY(0);
+}
+
+/* Thêm CSS cho nút Dark Mode */
+.btn-icon {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-color); /* Sử dụng biến màu chữ */
+    margin-left: 1rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.btn-icon:hover {
+    color: var(--primary-color);
+    transform: scale(1.1);
 }
