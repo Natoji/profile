@@ -579,9 +579,66 @@ footer {
     }
 
     /* Điều chỉnh kích thước font của tiêu đề để phù hợp hơn trên mobile */
-    .hero-text h1 {
-        font-size: 2.5rem;
-    }
+    .hero {
+            padding-top: 80px; /* Thêm padding-top để tránh bị header che mất */
+            text-align: center; /* Căn giữa nội dung trong hero section */
+            min-height: auto; /* Cho phép chiều cao tự động điều chỉnh */
+        }
+
+        .hero-content {
+            grid-template-columns: 1fr; /* CHUYỂN THÀNH MỘT CỘT */
+            gap: 2rem; /* Giảm khoảng cách giữa các phần tử */
+            padding: 2rem 1.5rem; /* Điều chỉnh padding cho màn hình nhỏ */
+        }
+
+        .hero-text {
+            padding: 0 1rem; /* Thêm padding cho khối text để nội dung không bị dính vào cạnh màn hình*/
+        }
+
+        .hero-text h1 {
+            font-size: 2.2rem; /* Giảm kích thước font cho tiêu đề chính */
+            margin-bottom: 0.5rem; /* Giảm khoảng cách dưới tiêu đề */
+            line-height: 1.2; /* Tăng line-height nếu tên bị cắt dòng */
+        }
+
+        .hero-text .subtitle {
+            font-size: 1.1rem; /* Giảm kích thước font cho phụ đề */
+            margin-bottom: 1rem; /* Giảm khoảng cách dưới phụ đề */
+        }
+
+        .hero-text p {
+            font-size: 0.95rem; /* Giảm kích thước font cho đoạn văn bản */
+            margin-bottom: 1.5rem; /* Giảm khoảng cách dưới đoạn văn bản */
+            max-width: 90%; /* Giới hạn độ rộng của đoạn văn bản để tránh tràn */
+            margin-left: auto; /* Căn giữa đoạn văn bản khi có max-width */
+            margin-right: auto; /* Căn giữa đoạn văn bản khi có max-width */
+        }
+
+        .cta-buttons {
+            flex-direction: column; /* Đặt các nút CTA theo cột */
+            gap: 0.8rem; /* Giảm khoảng cách giữa các nút */
+            max-width: 250px; /* Giới hạn độ rộng của khối chứa các nút */
+            margin: 0 auto; /* Căn giữa khối các nút */
+        }
+        
+        .btn {
+            width: 100%; /* Đảm bảo các nút chiếm đủ chiều rộng */
+            padding: 0.8rem 1.5rem; /* Điều chỉnh padding cho nút */
+        }
+
+        .hero-image {
+            order: -1; /* Đẩy hình ảnh lên trên văn bản trên mobile */
+            margin-bottom: 1.5rem; /* Thêm khoảng cách dưới ảnh */
+        }
+
+        /* Thay đổi kích thước profile-image, bạn đang dùng class "profile-image" 2 lần */
+        /* Nên dùng class "profile-image-container" cho div bao ngoài */
+        .profile-image-container { /* Chọn class cho div bao ngoài ảnh */
+            width: 180px; /* Giảm kích thước ảnh đại diện */
+            height: 180px; /* Giảm kích thước ảnh đại diện */
+            border: 3px solid rgba(255, 255, 255, 0.3); /* Giảm độ dày border */
+            margin: 0 auto; /* Căn giữa container ảnh */
+        }
 
     .about-content,
     .contact-content {
