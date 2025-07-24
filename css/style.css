@@ -467,18 +467,18 @@ section {
 
 .form-group input,
 .form-group textarea {
-    background-color: var(--card-bg); /* Nền input giống card */
-    color: var(--text-color); /* Màu chữ trong input */
-    border: 2px solid var(--border-color); /* Sử dụng biến */
+    padding: 1rem;
+    border: 2px solid var(--border-color);
     border-radius: 10px;
     font-size: 1rem;
-    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Thêm transition */
+    /* Loại bỏ 'width: 100%;' ở đây nếu bạn đã thêm nó */
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
-.form-group input:focus,
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary-color);
+/* Quy tắc riêng cho textarea, giữ nguyên để kiểm soát chiều cao */
+.form-group textarea {
+    min-height: 120px; /* Vẫn đảm bảo chiều cao tối thiểu */
+    resize: vertical; /* Vẫn cho phép thay đổi kích thước theo chiều dọc */
 }
 
 /* Footer */
