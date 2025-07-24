@@ -556,26 +556,29 @@ footer {
         display: flex;
     }
 
-    .menu-toggle {
-        display: flex;
-    }
-    
-    #dark-mode-toggle {
-        display: block; /* Đảm bảo nút này hiển thị trên mobile */
-        order: 2; /* Để nó xuất hiện sau menu-toggle nếu cần sắp xếp lại */
-    }
-
+    /* Đảm bảo nav là flex container và căn chỉnh */
     nav {
-        justify-content: space-around; /* Hoặc space-between, tùy chỉnh cho phù hợp */
-        gap: 0.5rem; /* Khoảng cách giữa các phần tử trong nav */
+        justify-content: space-between; /* Đẩy logo sang trái, các nút sang phải */
+        align-items: center; /* Căn giữa theo chiều dọc */
+        padding: 0 1.5rem; /* Điều chỉnh padding cho màn hình nhỏ */
     }
 
-    .hero-content {
-        grid-template-columns: 1fr;
-        text-align: center;
-        gap: 2rem;
+    /* Thay đổi thứ tự và hiển thị của Dark Mode Toggle */
+    #dark-mode-toggle {
+        display: block; /* Đảm bảo nút này hiển thị */
+        order: 2; /* Đặt sau logo và nav-links */
+        margin-left: auto; /* Đẩy nút này và các nút sau nó sang phải */
     }
 
+    /* Thay đổi thứ tự và hiển thị của Menu Toggle */
+    .menu-toggle {
+        display: flex; /* Đảm bảo nút này hiển thị */
+        order: 3; /* Đặt sau dark-mode-toggle */
+        /* Không cần margin-left: auto nữa vì dark-mode-toggle đã đẩy sang phải */
+        margin-left: 1rem; /* Tạo khoảng cách giữa dark mode và menu toggle */
+    }
+
+    /* Điều chỉnh kích thước font của tiêu đề để phù hợp hơn trên mobile */
     .hero-text h1 {
         font-size: 2.5rem;
     }
