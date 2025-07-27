@@ -416,6 +416,35 @@ section {
     transition: background-color 0.3s ease; /* Thêm transition */
 }
 
+.btn-project {
+    display: flex; /* Thay đổi từ inline-flex để có thể dùng margin auto căn giữa */
+    align-items: center; /* Căn giữa icon và text theo chiều dọc */
+    justify-content: center; /* Căn giữa nội dung trong nút */
+    padding: 0.8rem 1.5rem;
+    border: none; /* BỎ KHUNG */
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    color: var(--primary-color);
+    margin: 1.5rem auto 0 auto; /* CĂN GIỮA NÚT */
+    width: fit-content; /* Nút chỉ rộng bằng nội dung của nó */
+}
+
+.btn-project i {
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+}
+
+.btn-project:hover {
+    background: var(--primary-color);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
 /* Contact Section */
 .contact-content {
     display: grid;
