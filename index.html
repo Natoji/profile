@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trần Hải Nam - Portfolio</title>
+    <meta name="description" content="Portfolio chuyên nghiệp của Trần Hải Nam - Full Stack Developer tại Hà Nội, Việt Nam.">
+    <meta property="og:title" content="Trần Hải Nam - Portfolio">
+    <meta property="og:description" content="Full Stack Developer | Web, Mobile, UI/UX, Data">
+    <meta property="og:image" content="./images/avatar.jpg">
+    <link rel="icon" href="./images/avatar.jpg">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/style.css">
-    </head>
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+</head>
 <body>
-    <header>
+    <header id="main-header">
         <nav>
             <div class="logo">Portfolio</div>
             <ul class="nav-links">
@@ -18,8 +24,9 @@
                 <li><a href="#portfolio">Dự án</a></li>
                 <li><a href="#contact">Liên hệ</a></li>
             </ul>
-            <button id="dark-mode-toggle" class="btn-icon">
-                <i class="fas fa-moon"></i> </button>
+            <button id="dark-mode-toggle" class="btn-icon" title="Chuyển chế độ sáng/tối">
+                <i class="fas fa-moon"></i>
+            </button>
             <div class="menu-toggle">
                 <span></span>
                 <span></span>
@@ -28,7 +35,7 @@
         </nav>
     </header>
 
-    <section id="home" class="hero">
+    <section id="home" class="hero" data-aos="fade-up">
         <div class="hero-content">
             <div class="hero-text">
                 <h1>Trần Hải Nam</h1>
@@ -40,14 +47,14 @@
                 </div>
             </div>
             <div class="hero-image">
-                <div class="profile-image-container" style="background: linear-gradient(45deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem;">
+                <div class="profile-image-container">
                     <img src="./images/avatar.jpg" alt="Avatar" class="profile-image">
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="about">
+    <section id="about" class="about" data-aos="fade-up">
         <div class="container">
             <div class="section-title fade-in">
                 <h2>Giới thiệu về tôi</h2>
@@ -80,12 +87,22 @@
                         <h4>Database</h4>
                         <p>MySQL, MongoDB</p>
                     </div>
+                    <div class="skill-item">
+                        <i class="fas fa-mobile-alt"></i>
+                        <h4>Mobile App</h4>
+                        <p>React Native, Flutter</p>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-paint-brush"></i>
+                        <h4>UI/UX Design</h4>
+                        <p>Figma, Adobe XD</p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="services">
+    <section id="services" data-aos="fade-up">
         <div class="container">
             <div class="section-title fade-in">
                 <h2>Dịch vụ của tôi</h2>
@@ -111,7 +128,7 @@
         </div>
     </section>
 
-    <section id="portfolio" class="portfolio">
+    <section id="portfolio" class="portfolio" data-aos="fade-up">
         <div class="container">
             <div class="section-title fade-in">
                 <h2>Dự án của tôi</h2>
@@ -173,7 +190,7 @@
         </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" data-aos="fade-up">
         <div class="container">
             <div class="section-title fade-in">
                 <h2>Liên hệ với tôi</h2>
@@ -232,9 +249,22 @@
                 <a href="https://github.com/Natoji" target="_blank"><i class="fab fa-github"></i></a>
             </div>
             <p>&copy; 2025 Trần Hải Nam. All rights reserved.</p>
+            <button id="back-to-top" title="Lên đầu trang"><i class="fas fa-arrow-up"></i></button>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="js/script.js"></script>
+    <script>
+      AOS.init();
+      // Sticky header
+      window.addEventListener('scroll', function() {
+        const header = document.getElementById('main-header');
+        header.classList.toggle('sticky', window.scrollY > 50);
+        document.getElementById('back-to-top').style.display = window.scrollY > 200 ? 'block' : 'none';
+      });
+      // Back to top
+      document.getElementById('back-to-top').onclick = () => window.scrollTo({top:0,behavior:'smooth'});
+    </script>
 </body>
 </html>
